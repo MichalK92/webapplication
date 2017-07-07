@@ -3,15 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.mkotlinski.webapplication</groupId>
 	<artifactId>webapplication</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<dependencies> 		<!-- Form validation [BEGIN] -->
+	<dependencies>
+		<!-- Form validation [BEGIN] -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
-		</dependency> 		<!-- Form Validation [END] -->
+		</dependency>
+		<!-- Form Validation [END] -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -22,7 +24,6 @@
 			<artifactId>spring-web</artifactId>
 			<version>${spring.web.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -54,13 +55,50 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		<!-- WebJar [BEGIN] -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7-1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+		<!-- WebJar [END] -->
+		<!-- Thymeleaf [BEGIN] -->
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf</artifactId>
+			<version>${thymeleaf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring4</artifactId>
+			<version>${thymeleaf.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+			<version>${thymeleafspringsecurity4.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		<!-- Thymeleaf [END] -->
 	</dependencies>
 	<properties>
 		<spring.security.version>4.0.4.RELEASE</spring.security.version>
 		<spring.version>4.3.6.RELEASE</spring.version>
 		<spring.web.version>4.3.7.RELEASE</spring.web.version>
+		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
+		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>		
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -73,32 +111,12 @@
 		</plugins>
 	</build>
 
-	<!-- <build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.3</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.github.jsimone</groupId>
-									<artifactId>webapp-runner</artifactId>
-									<version>8.5.11.3</version>
-									<destFileName>webapp-runner.jar</destFileName>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build> -->
+	<!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-dependency-plugin</artifactId> <version>2.3</version> <executions> 
+		<execution> <phase>package</phase> <goals> <goal>copy</goal> </goals> <configuration> 
+		<artifactItems> <artifactItem> <groupId>com.github.jsimone</groupId> <artifactId>webapp-runner</artifactId> 
+		<version>8.5.11.3</version> <destFileName>webapp-runner.jar</destFileName> 
+		</artifactItem> </artifactItems> </configuration> </execution> </executions> 
+		</plugin> </plugins> </build> -->
 
 </project>
