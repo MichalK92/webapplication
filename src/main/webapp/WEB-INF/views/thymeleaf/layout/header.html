@@ -29,7 +29,7 @@
 						aria-expanded="false">Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu" sec:authorize="isAnonymous()">
 							<li><a href="#" th:href="@{/}">Main page</a></li>
-							<li><a href="#" th:href="@{/}">Log in</a></li>
+							<li><a href="#" th:href="@{/login}">Log in</a></li>
 						</ul>
 						<ul class="dropdown-menu" sec:authorize="isAuthenticated()">
 							<li><a href="#" th:href="@{/}">Main page</a></li>
