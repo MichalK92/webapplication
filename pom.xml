@@ -55,6 +55,21 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		<!-- Spring Security Taglibs [BEGIN] -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<!-- Spring Security Taglibs [END] -->		
+		<!-- For SpringSecurityInitializer [BEGIN] -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- For SpringSecurityInitializer [END]-->		
 		<!-- WebJar [BEGIN] -->
 		<dependency>
 			<groupId>org.webjars</groupId>

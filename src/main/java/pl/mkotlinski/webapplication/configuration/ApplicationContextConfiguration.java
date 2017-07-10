@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
@@ -26,6 +27,7 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/views/css/");
     }
 	
 	//Thymeleaf
@@ -47,7 +49,7 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
 		templateEngine.setTemplateResolver(templateResolver());
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.addDialect(new LayoutDialect());
-		//templateEngine.addDialect(springSecurityDialect());
+		templateEngine.addDialect(springSecurityDialect());
 		return templateEngine;
 	}
 
@@ -77,6 +79,12 @@ public class ApplicationContextConfiguration extends WebMvcConfigurerAdapter imp
         resolver.setSuffix(".jsp");
         return resolver;
     }
+	
+	@Bean
+	public SpringSecurityDialect springSecurityDialect()
+	{
+		return new SpringSecurityDialect();
+	}
 	
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
