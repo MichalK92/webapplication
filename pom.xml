@@ -113,7 +113,7 @@
 		<spring.web.version>4.3.7.RELEASE</spring.web.version>
 		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
 		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>
-		<system.version>0.0.3-SNAPSHOT</system.version>
+		<system.version>0.0.4-SNAPSHOT</system.version>
 	</properties>
 	<build>
 		<plugins>
