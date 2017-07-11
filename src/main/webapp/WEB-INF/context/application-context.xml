@@ -5,5 +5,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 	http://www.springframework.org/schema/beans/spring-beans.xsd 	http://www.springframework.org/schema/context 	http://www.springframework.org/schema/context/spring-context-4.0.xsd 	http://www.springframework.org/schema/mvc 	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
 	<mvc:annotation-driven enable-matrix-variables="true" />
-	<context:component-scan base-package="pl.mkotlinski.webapplication" />	
+	<context:component-scan base-package="pl.mkotlinski.webapplication" />
+
+<!-- FOR HEROKU [START] -->
+	 <bean id="propertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="searchSystemEnvironment" value="true" />
+		<property name="location">
+			<value>classpath:application.properties</value>
+		</property>
+	</bean>
+	<bean class="java.net.URI" id="dbUrl">
+		<constructor-arg value="${DATABASE_URL}" />
+	</bean>
+	<bean class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" id="dataSource">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url"
+			value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }" />
+		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }" />
+		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }" />
+	</bean>
+<!-- FOR HEROKU [END] -->
 </beans>
