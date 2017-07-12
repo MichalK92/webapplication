@@ -135,6 +135,24 @@
 			<version>1.2.2</version>
 		</dependency>
 		<!-- HIBERNATE && ORM && POSTGRES [END] -->
+		
+		<!-- TESTS [BEGIN] -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.7.19</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- TESTS [END] -->
 
 	</dependencies>
 	<properties>
@@ -144,7 +162,7 @@
 		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
 		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>
 		<hibernate.version>4.3.10.Final</hibernate.version>
-		<system.version>0.0.5-SNAPSHOT</system.version>
+		<system.version>0.0.6-SNAPSHOT</system.version>
 	</properties>
 	<build>
 		<plugins>
