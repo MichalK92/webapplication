@@ -2,6 +2,7 @@ package pl.mkotlinski.webapplication.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,20 +22,33 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.mkotlinski.webapplication.exception.user.UserExistsException;
 import pl.mkotlinski.webapplication.model.form.user.UserProfileForm;
 import pl.mkotlinski.webapplication.model.user.UserProfile;
-import pl.mkotlinski.webapplication.model.user.UserRole;
 import pl.mkotlinski.webapplication.model.user.UserRoleEnum;
 import pl.mkotlinski.webapplication.service.UserRoleService;
 import pl.mkotlinski.webapplication.service.UserService;
+import pl.mkotlinski.webapplication.vaildator.UserFormValidator;
 
 @Controller
 @RequestMapping("/")
 public class MainController extends AbstractController{
 	
+	
+	//Services
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private UserRoleService userRoleService;
+	
+	//Validators	
+	@Autowired
+	private UserFormValidator userFormValidator;
+	
+	@InitBinder
+	private void initBinding(WebDataBinder binder)
+	{
+		binder.setValidator(userFormValidator);
+	}
+	
 	
 	@RequestMapping
 	public ModelAndView defaultPage()
@@ -109,7 +125,4 @@ public class MainController extends AbstractController{
 	}
 	
 	//UserProfile[END]
-	
-	//
-
 }

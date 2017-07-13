@@ -3,7 +3,7 @@ package pl.mkotlinski.webapplication.model.form.user;
 import pl.mkotlinski.webapplication.model.user.UserProfile;
 
 public class UserProfileForm {
-	
+
 	private String login;
 
 	private String firstName;
@@ -14,7 +14,7 @@ public class UserProfileForm {
 
 	private String password;
 
-	private String password2;
+	private String passwordConfirm;
 
 	public String getLogin() {
 		return login;
@@ -56,16 +56,15 @@ public class UserProfileForm {
 		this.password = password;
 	}
 
-	public String getPassword2() {
-		return password2;
+	public String getPasswordConfirm() {
+		return passwordConfirm;
 	}
 
-	public void setPassword2(String password2) {
-		this.password2 = password2;
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
 	}
 
-	public UserProfile getUser()
-	{
+	public UserProfile getUser() {
 		UserProfile userProfile = new UserProfile();
 		userProfile.setFirstName(this.firstName);
 		userProfile.setLogin(this.login);
