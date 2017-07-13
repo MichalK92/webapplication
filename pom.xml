@@ -162,7 +162,7 @@
 		<thymeleaf.version>3.0.5.RELEASE</thymeleaf.version>
 		<thymeleafspringsecurity4.version>3.0.2.RELEASE</thymeleafspringsecurity4.version>
 		<hibernate.version>4.3.10.Final</hibernate.version>
-		<system.version>0.0.6-SNAPSHOT</system.version>
+		<system.version>0.0.7-SNAPSHOT</system.version>
 	</properties>
 	<build>
 		<plugins>

@@ -87,6 +87,11 @@ public class UserProfile {
 	public void setLogin(String login) {
 		this.login = login;
 	}
+	
+	public void addRole(UserRole userRole)
+	{		
+		roles.add(userRole);
+	}
 
 	@Override
 	public String toString() {

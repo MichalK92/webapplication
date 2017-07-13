@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import pl.mkotlinski.webapplication.model.user.UserProfile;
 import pl.mkotlinski.webapplication.model.user.UserRole;
 import pl.mkotlinski.webapplication.model.user.UserRoleEnum;
 import pl.mkotlinski.webapplication.repository.abstractDao.AbstractDao;
@@ -55,8 +58,10 @@ public class UserRoleDaoImpl extends AbstractDao<Long, UserRole> implements User
 
 	@Override
 	public UserRole findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = getEntityMenager().unwrap(Session.class);
+		Criteria criteria = session.createCriteria(UserRole.class).add(Restrictions.eq("role", name));
+		UserRole userRole = (UserRole) criteria.uniqueResult();
+		return userRole;
 	}
 	
 	/*
