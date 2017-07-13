@@ -15,5 +15,4 @@ public enum UserRoleEnum {
 	{
 		return userRole;
 	}
-
 }

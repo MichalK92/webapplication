@@ -40,16 +40,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addUser(UserProfile user) throws UserExistsException {
+	public void addUser(UserProfile newUser) throws UserExistsException {
 				
-		UserProfile userProfile = findByLogin(user.getLogin());
+		UserProfile userProfile = findByLogin(newUser.getLogin());
 		
 		if(userProfile != null)
 		{
-			throw new UserExistsException(user.getLogin());
+			throw new UserExistsException(newUser.getLogin());
 		}
 		
-		userDao.addUser(userProfile);
+		userDao.addUser(newUser);
 	}
 
 }

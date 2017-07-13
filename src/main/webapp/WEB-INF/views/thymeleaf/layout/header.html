@@ -29,11 +29,12 @@
 						aria-expanded="false">Menu<span class="caret"></span></a>
 						<ul class="dropdown-menu" sec:authorize="isAnonymous()">
 							<li><a href="#" th:href="@{/}">Main page</a></li>
-							<li><a href="#" th:href="@{/login}">Log in</a></li>
+							<li><a href="#" th:href="@{/login}">Sign in</a></li>
+							<li><a href="#" th:href="@{/register}">Register</a></li>
 						</ul>
 						<ul class="dropdown-menu" sec:authorize="isAuthenticated()">
 							<li><a href="#" th:href="@{/}">Main page</a></li>
-							<li><a href="#" th:href="@{/}">User Account</a></li>
+							<li><a href="#" th:href="@{/profile}">User Account</a></li>
 							<li><a href="#" th:href="@{/logout}">Logout</a></li>
 						</ul></li>
 				</ul>
